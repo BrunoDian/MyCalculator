@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnEqual = findViewById<Button>(R.id.btnEqual)
         btnEqual.setOnClickListener {
-            calculateResult()
+
         }
     }
     // Function to process the operation
