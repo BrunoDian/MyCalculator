@@ -2,7 +2,6 @@ package com.example.mycalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
@@ -10,6 +9,8 @@ class MainActivity : AppCompatActivity() {
 
     // Text View of input variable
     private lateinit var tvInput: TextView
+    private var lastNumeric = false
+    private var lastDot = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         numberButtons.forEach { lol ->
             lol.setOnClickListener {
                 tvInput.append(lol.text)
+                lastNumeric = true
             }
         }
 
@@ -52,6 +54,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val btnDot = findViewById<Button>(R.id.btnDot)
+        btnDot.setOnClickListener {
+            onDecimalPoint()
+        }
+
         // System buttons variables
         val btnClear = findViewById<Button>(R.id.btnClear)
         btnClear.setOnClickListener {
@@ -60,9 +67,10 @@ class MainActivity : AppCompatActivity() {
 
         val btnEqual = findViewById<Button>(R.id.btnEqual)
         btnEqual.setOnClickListener {
-
+            calculateResult()
         }
     }
+
     // Function to process the operation
     private fun performOperation() {
 
@@ -71,5 +79,13 @@ class MainActivity : AppCompatActivity() {
     // Function to perform the equality operation
     private fun calculateResult() {
 
+    }
+
+    private fun onDecimalPoint() {
+        if (lastNumeric && !lastDot) {
+            tvInput.append(".")
+            lastNumeric = false
+            lastDot = true
+        }
     }
 }
