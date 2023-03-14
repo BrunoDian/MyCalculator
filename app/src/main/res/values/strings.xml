@@ -10,6 +10,7 @@
     <string name="btn_7">7</string>
     <string name="btn_8">8</string>
     <string name="btn_9">9</string>
+    <string name="btnDot">.</string>
 
     <string name="btnPlus">+</string>
     <string name="btnMinus">-</string>
